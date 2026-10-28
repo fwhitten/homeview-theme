@@ -1,0 +1,127 @@
+# HomeView: liquid glass over a photo wallpaper, for Home Assistant wall panels.
+# Works on its own and alongside HomeView Cards, which read the --hv-* tokens below.
+#
+# Copy the photos from this repo's wallpapers/ folder to /config/www/homeview/
+# (served as /local/homeview/...), or point lovelace-background at your own.
+
+HomeView:
+  # Shared by both modes
+  ha-font-family-body: '-apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif'
+  primary-font-family: '-apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif'
+  paper-font-common-base_-_font-family: '-apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif'
+  hv-font: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, system-ui, sans-serif'
+  hv-font-rounded: '"SF Pro Rounded", ui-rounded, -apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif'
+
+  hv-radius: 30px
+  ha-card-border-radius: 30px
+  ha-card-border-width: 0px
+  ha-card-backdrop-filter: blur(18px) saturate(185%)
+
+  # Category colours
+  state-light-on-color: '#FFC94D'
+  state-climate-heat-color: '#FF8A3D'
+  state-climate-cool-color: '#4FB3FF'
+  energy-grid-consumption-color: '#4CD07D'
+  state-vacuum-cleaning-color: '#40C8C0'
+  state-media_player-playing-color: '#BF5AF2'
+  error-color: '#E5484D'
+  warning-color: '#FFB340'
+  success-color: '#4CD07D'
+  info-color: '#4C8DFF'
+
+  # Night mode is drawn by HomeView Cards (HA themes only have light and dark).
+  hv-night-wall: '#030304'
+  hv-night-glass: 'rgba(255, 255, 255, 0.035)'
+  hv-night-glass-strong: 'rgba(255, 255, 255, 0.07)'
+  hv-night-rim: 'rgba(255, 255, 255, 0.16)'
+  hv-night-rim-soft: 'rgba(255, 255, 255, 0.04)'
+  hv-night-sheen: 'rgba(255, 255, 255, 0.03)'
+  hv-night-ink: '#D8C3AB'
+  hv-night-ink-2: 'rgba(216, 195, 171, 0.68)'
+  hv-night-ink-3: 'rgba(216, 195, 171, 0.42)'
+  hv-night-track: 'rgba(216, 195, 171, 0.14)'
+
+  modes:
+    dark:
+      lovelace-background: 'center / cover no-repeat fixed url("/local/homeview/wall-dusk.jpg"), #1a1730'
+      primary-background-color: '#14121f'
+      secondary-background-color: '#1d1a2c'
+      primary-color: '#FFC94D'
+      accent-color: '#4C8DFF'
+      primary-text-color: '#FFFFFF'
+      secondary-text-color: 'rgba(255, 255, 255, 0.76)'
+      disabled-text-color: 'rgba(255, 255, 255, 0.5)'
+      divider-color: 'rgba(255, 255, 255, 0.12)'
+      card-background-color: 'rgba(30, 28, 44, 0.72)'
+      ha-card-background: 'radial-gradient(130% 80% at 0% 0%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 52%), rgba(255, 255, 255, 0.07)'
+      ha-card-box-shadow: 'inset 1.5px 1.5px 0 rgba(255, 255, 255, 0.35), inset -1px -1px 0 rgba(255, 255, 255, 0.1), 0 16px 40px rgba(10, 8, 24, 0.28)'
+      ha-dialog-surface-background: 'rgba(30, 32, 44, 0.86)'
+      mdc-theme-surface: '#1e1c2c'
+      app-header-background-color: 'rgba(20, 18, 32, 0.4)'
+      app-header-text-color: '#FFFFFF'
+      sidebar-background-color: 'rgba(20, 18, 32, 0.72)'
+      sidebar-text-color: 'rgba(255, 255, 255, 0.8)'
+      sidebar-icon-color: 'rgba(255, 255, 255, 0.7)'
+      sidebar-selected-text-color: '#FFC94D'
+      sidebar-selected-icon-color: '#FFC94D'
+
+      hv-wall: '#1a1730'
+      hv-glass: 'rgba(255, 255, 255, 0.07)'
+      hv-glass-strong: 'rgba(255, 255, 255, 0.16)'
+      hv-rim: 'rgba(255, 255, 255, 0.62)'
+      hv-rim-soft: 'rgba(255, 255, 255, 0.12)'
+      hv-sheen: 'rgba(255, 255, 255, 0.14)'
+      hv-shadow: '0 16px 40px rgba(10, 8, 24, 0.28)'
+      hv-blur: 'blur(18px) saturate(185%) brightness(0.86)'
+      hv-ink: '#FFFFFF'
+      hv-ink-2: 'rgba(255, 255, 255, 0.76)'
+      hv-ink-3: 'rgba(255, 255, 255, 0.5)'
+      hv-ink-inverse: '#0C0F17'
+      hv-track: 'rgba(255, 255, 255, 0.2)'
+      hv-heat-ink: '#FFB27A'
+      hv-energy-ink: '#7BE8A2'
+      hv-dhw-ink: '#8FD8FF'
+      hv-clean-ink: '#7DE3DC'
+      hv-popup-background: 'rgba(30, 32, 44, 0.58)'
+
+    light:
+      lovelace-background: 'center / cover no-repeat fixed url("/local/homeview/wall-day.jpg"), #dfe8ef'
+      primary-background-color: '#e8eef3'
+      secondary-background-color: '#dfe8ef'
+      primary-color: '#B07800'
+      accent-color: '#2F6FE0'
+      primary-text-color: '#0F1115'
+      secondary-text-color: 'rgba(15, 17, 21, 0.7)'
+      disabled-text-color: 'rgba(15, 17, 21, 0.48)'
+      divider-color: 'rgba(15, 17, 21, 0.1)'
+      card-background-color: 'rgba(255, 255, 255, 0.78)'
+      ha-card-background: 'radial-gradient(130% 80% at 0% 0%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 52%), rgba(255, 255, 255, 0.3)'
+      ha-card-box-shadow: 'inset 1.5px 1.5px 0 #ffffff, inset -1px -1px 0 rgba(255, 255, 255, 0.45), 0 16px 40px rgba(40, 60, 90, 0.16)'
+      ha-dialog-surface-background: 'rgba(255, 255, 255, 0.86)'
+      mdc-theme-surface: '#f4f7fa'
+      app-header-background-color: 'rgba(255, 255, 255, 0.4)'
+      app-header-text-color: '#0F1115'
+      sidebar-background-color: 'rgba(255, 255, 255, 0.7)'
+      sidebar-text-color: 'rgba(15, 17, 21, 0.8)'
+      sidebar-icon-color: 'rgba(15, 17, 21, 0.7)'
+      sidebar-selected-text-color: '#B07800'
+      sidebar-selected-icon-color: '#B07800'
+
+      hv-wall: '#dfe8ef'
+      hv-glass: 'rgba(255, 255, 255, 0.3)'
+      hv-glass-strong: 'rgba(255, 255, 255, 0.55)'
+      hv-rim: '#FFFFFF'
+      hv-rim-soft: 'rgba(255, 255, 255, 0.45)'
+      hv-sheen: 'rgba(255, 255, 255, 0.5)'
+      hv-shadow: '0 16px 40px rgba(40, 60, 90, 0.16)'
+      hv-blur: 'blur(18px) saturate(185%) brightness(1.06)'
+      hv-ink: '#0F1115'
+      hv-ink-2: 'rgba(15, 17, 21, 0.7)'
+      hv-ink-3: 'rgba(15, 17, 21, 0.48)'
+      hv-ink-inverse: '#FFFFFF'
+      hv-track: 'rgba(15, 17, 21, 0.14)'
+      hv-heat-ink: '#A8460A'
+      hv-energy-ink: '#18723A'
+      hv-dhw-ink: '#0B6A9C'
+      hv-clean-ink: '#0E7069'
+      hv-popup-background: 'rgba(255, 255, 255, 0.55)'
